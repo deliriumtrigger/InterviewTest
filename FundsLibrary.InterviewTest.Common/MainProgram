@@ -1,0 +1,55 @@
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using FundManager;
+using Location;
+using Role;
+using User; 
+using callAPI
+
+namespace mainProgram;
+{
+    static void Main(string[] args)
+    
+   { 
+        //Assigned variables for entering program responses. 
+        string = managerOutput = ("Enter a Manager's name ");
+        string = managerInput; 
+        string = teamMemberInput;
+        string = userInput;
+        bool teamInput;
+        string = pullMemberRecord;
+        string = pullTeamRecord;
+        
+        //Initially, the program asks the user if they would like to display the information of a specific manager.
+        System.Console.Writeline (managerOutput + managerInput);
+        
+        //Does the user want to display the entire team associated with the chosen manager or a single member?
+        System.Console.Writeline ("Chose a team member or to view all: " + teamInput);
+    
+        If(teamInput = true)
+            {
+              callAPI = System.Console.Writeline = callAPI.pullTeamRecord; // I wasn't sure what the API was called, 
+                                          //nor the command to pull through a record from it.
+            }
+            else
+                {
+                    System.Console.Writeline = callAPI.pullMemberRecord; //As above, I couldn't find the name of the 
+                                        //API nor how to full a series of data from it. 
+                }
+                          
+        System.Console.Writeline ("Would you like to view a different record?" + );
+    
+        //If the user wants to search for another record, repeat the program loop, otherwise close the application.
+        if (recordInput)
+            {
+                static void Main();
+            }
+            else
+            {
+                this.Close();
+            }        
+   }
+}
