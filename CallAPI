@@ -1,0 +1,51 @@
+
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using FundManager;
+using Location;
+using Role;
+using User; 
+using callAPI
+
+//This class allows the program created in MainProgram to call specific elements of the API. 
+//Please note I have not done anything like this before. 
+
+class callAPI
+    {
+        //Creates a new HTTPClient, able to pull information from the API and display it to the program. 
+        static HttpClient client = new HttpClient();
+
+        static void ShowProduct(Product product)
+        {
+            Console.WriteLine($"Name: {product.Name}\tPrice: {product.Price}\tCategory: {product.Category}");
+        }
+        
+        //Calls the API to display the correct information, presuming the API has it's own built in search functions for 
+        //finding the information within. 
+        static async Task<Uri> CreateProductAsync(Product product)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync("api/products", product);
+            response.EnsureSuccessStatusCode();
+
+            // Returns the URL of the created resource from the Web API. 
+            return response.Headers.Location;
+        }
+
+        //Displays the called API information. 
+        static async Task<Product> GetProductAsync(string path)
+        {
+            Product product = null;
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                product = await response.Content.ReadAsAsync<Product>();
+            }
+            return product;
+        }
+
+
+
+
